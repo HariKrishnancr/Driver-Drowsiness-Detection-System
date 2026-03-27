@@ -1,0 +1,25 @@
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Set the base directory
+RewriteBase /Drowsiness_Detection-master/
+
+# Redirect all requests to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Security: Deny access to sensitive files
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Prevent directory listing
+Options -Indexes
+
+# Set default charset
+AddDefaultCharset UTF-8
+
+# Enable error pages (optional)
+# ErrorDocument 404 /Drowsiness_Detection-master/error.php
